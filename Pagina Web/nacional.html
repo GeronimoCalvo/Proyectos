@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futbol Nacional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Teko:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url(https://st.depositphotos.com/2524151/4346/i/450/depositphotos_43462485-stock-photo-soccer-football-grass-field.jpg);
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            background-color: #000000;
+            color: #ffffff;
+            position: relative;
+        }
+
+        header h1 {
+            flex: 1;
+            margin: 0;
+        }
+
+        header img {
+            width: 80px;
+            margin-left: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffffff;
+            padding: 10px;
+        }
+
+        nav a {
+            margin: 0 16px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: gray;
+            color: white;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        article {
+            width: 30%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        article:hover {
+            background-color: gray;
+            color: white;
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .img-container img {
+            width: 49%; 
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        #hora {
+            position: absolute;
+            top: 20px;
+            
+            color: rgb(251, 255, 0); 
+            font-size: 24px; 
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #3e444a;
+            color: #d4d5dc;
+            margin-top: 20px;
+        }
+
+        footer img {
+            width: 50px;
+            margin-left: 10px;
+        }
+
+        p {
+            font-family: 'Teko', sans-serif;
+            font-size: 24px;
+        }
+
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .controls button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: gray;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Futbol Nacional</h1>
+        <div id="hora"></div> 
+        <div>
+            <a href="pagina.html">
+                <img src="https://pbs.twimg.com/profile_images/1385064961718853639/oBD_tnUi_400x400.jpg" alt="Futbol Nacional">
+            </a>
+        </div>
+    </header>
+
+    <section id="articles-section">
+        <article>
+            <h2>Liga 2024</h2>
+            <p>Asi estan los promedios de cara a la Liga profesional 2024</p>
+            <img src="https://www.clarin.com/img/2023/12/03/Uz-yHKYG0_1200x0__1.jpg" style='max-width: 100%;'>
+        </article>
+
+        <article>
+            <h2>Nacional B (Zona A)</h2>
+            <p>La zona a Nacional esta con todo!.</p>
+            <img src="https://cdn.futbolargentino.com/sdi/2023/05/25/fecha-18-y-16-de-la-primera-b-nacional-programacion-horarios-y-tabla-de-posiciones-1151158.webp" style='max-width:100%'>
+        </article>
+
+        <article>
+            <h2>Nacional B (Zona B)</h2>
+            <p>No esta siendo una buena temporada para Brown.</p>
+            <img src="https://statics.eleconomista.com.ar/2024/05/crop/664d10c692570__780x780.webp" style='max-width:100%'>
+        </article>
+    </section>
+
+    <footer>
+        <p>&copy; Geronimo Calvo, 2024 Noticias Deportivas</p>
+        <img src="https://i.pinimg.com/736x/47/fa/f0/47faf087d598cbf40839aa564b737d8b.jpg" alt="Deportes">
+    </footer>
+
+    <div class="controls">
+        <button onclick="alternarArticulos()">Mostrar/Ocultar Artículos</button>
+        <button onclick="cambiarTamañoTexto('aumentar')">Aumentar Texto</button>
+        <button onclick="cambiarTamañoTexto('disminuir')">Disminuir Texto</button>
+    </div>
+
+    <script>
+        function mostrarHora() {
+            var time = new Date();
+            var horas = time.getHours().toString().padStart(2, '0');
+            var minutos = time.getMinutes().toString().padStart(2, '0');
+            var segundos = time.getSeconds().toString().padStart(2, '0');
+            var hora = horas + ":" + minutos + ":" + segundos;
+            document.getElementById('hora').textContent = hora;
+        }
+
+        mostrarHora();
+        setInterval(mostrarHora, 1000); 
+
+        
+
+        function alternarArticulos() {
+            var articlesSection = document.getElementById('articles-section');
+            if (articlesSection.classList.contains('hidden')) {
+                articlesSection.classList.remove('hidden');
+            } else {
+                articlesSection.classList.add('hidden');
+            }
+        }
+
+        function cambiarTamañoTexto(accion) {
+            var todosLosTextos = document.querySelectorAll('p, h2');
+            todosLosTextos.forEach(function(texto) {
+                var tamañoActual = window.getComputedStyle(texto, null).getPropertyValue('font-size');
+                var tamañoActualNum = parseFloat(tamañoActual);
+                if (accion === 'aumentar') {
+                    texto.style.fontSize = (tamañoActualNum + 2) + 'px';
+                } else if (accion === 'disminuir') {
+                    texto.style.fontSize = (tamañoActualNum - 2) + 'px';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

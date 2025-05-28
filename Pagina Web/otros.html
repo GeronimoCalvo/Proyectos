@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otros Deportes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url(https://static.vecteezy.com/system/resources/previews/014/460/112/non_2x/seamless-pattern-of-various-sports-is-made-of-line-icons-perfect-for-web-sites-wraps-wallpapers-postcards-vector.jpg);
+        }
+
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #050505;
+            color: #ffffff;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #000000;
+            padding: 10px;
+        }
+
+        nav a {
+            margin: 0 16px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(128, 128, 128, 0.5);
+            color: white;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        article {
+            width: 30%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        article:hover {
+            background-color: rgb(0, 0, 0);
+            color: white;
+        }
+
+        #hora {
+            position: absolute;
+            top: 20px;
+            right: 50px; 
+            color: rgb(255, 0, 0); 
+            font-size: 24px; 
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .img-container img {
+            width: 49%; 
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #3e444a;
+            color: #d4d5dc;
+            margin-top: 20px;
+        }
+
+        footer img {
+            width: 50px; 
+            margin-left: 10px;
+        }
+
+        p {
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        h2{
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .controls button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: gray;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Otros Deportes</h1>
+        <div id="hora"></div> 
+        <nav>
+            <a href="pagina.html">
+                <img src="https://w7.pngwing.com/pngs/577/164/png-transparent-olympic-games-verite-2016-summer-olympics-2022-winter-olympics-ring-text-olympic-games.png" style='max-width: 5%;' alt="">
+            </a>
+        </nav>
+    </header>
+
+    <section id="articles-section">
+        <article>
+            <h2>NBA</h2>
+            <p>Minnesota ganó en Dallas y estiró la final del Oeste</p>
+            <img src="https://media.tycsports.com/files/2024/05/28/723108/mavs-wolves-nba_862x485.webp" style='max-width: 100%;'>
+        </article>
+
+        <article>
+            <h2>GOLF</h2>
+            <p>Schauffele consigue birdie en el 18 para ganar el PGA Championship</p>
+            <img src="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2024/05/20/17161860324961.jpg" style='max-width:100%'>
+        </article>
+
+        <article>
+            <h2>Tenis</h2>
+            <p>Novak Djokovic ganó un partido durísimo en su debut en el Roland Garros 2024</p>
+            <img src="https://www.ole.com.ar/images/2024/05/28/4sxw55fRz_1290x760__1.jpg" style='max-width:100%'>
+        </article>
+    </section>
+
+    <footer>
+        <p>&copy; Geronimo Calvo, 2024 Noticias Deportivas</p>
+        <img src="https://i.pinimg.com/736x/47/fa/f0/47faf087d598cbf40839aa564b737d8b.jpg" alt="Deportes">
+    </footer>
+
+    <div class="controls">
+        <button onclick="alternarArticulos()">Mostrar/Ocultar Artículos</button>
+        <button onclick="cambiarTamañoTexto('aumentar')">Aumentar Texto</button>
+        <button onclick="cambiarTamañoTexto('disminuir')">Disminuir Texto</button>
+    </div>
+
+    <script>
+        function mostrarHora() {
+            var time = new Date();
+            var hora = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+            document.getElementById('hora').textContent = hora;
+        }
+
+        mostrarHora();
+        setInterval(mostrarHora, 1000); 
+
+        
+
+        function alternarArticulos() {
+            var articlesSection = document.getElementById('articles-section');
+            if (articlesSection.classList.contains('hidden')) {
+                articlesSection.classList.remove('hidden');
+            } else {
+                articlesSection.classList.add('hidden');
+            }
+        }
+
+        function cambiarTamañoTexto(accion) {
+            var todosLosTextos = document.querySelectorAll('p, h2');
+            todosLosTextos.forEach(function(texto) {
+                var tamañoActual = window.getComputedStyle(texto, null).getPropertyValue('font-size');
+                var tamañoActualNum = parseFloat(tamañoActual);
+                if (accion === 'aumentar') {
+                    texto.style.fontSize = (tamañoActualNum + 2) + 'px';
+                } else if (accion === 'disminuir') {
+                    texto.style.fontSize = (tamañoActualNum - 2) + 'px';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

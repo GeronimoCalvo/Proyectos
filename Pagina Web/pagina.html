@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: rgb(0, 0, 0);
+            color: white;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+            background-color: #000000;
+            color: #ffffff;
+            position: relative;
+        }
+
+        #hora {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: rgb(255, 255, 255); 
+            font-size: 24px; 
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffffff;
+            padding: 10px;
+        }
+
+        nav a {
+            margin: 0 16px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: gray;
+            color: white;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        article {
+            width: 30%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        article:hover {
+            background-color: gray;
+            color: white;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            font-family: 'Anton', sans-serif;
+            color: rgb(255, 255, 255);
+        }
+
+        p {
+            font-family: 'great vibes', sans-serif;
+            font-size: 24px;
+            color: white;
+        }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #3e444a;
+            color: #d4d5dc;
+            margin-top: 20px;
+        }
+
+        footer img {
+            width: 50px;
+            margin-left: 10px;
+        }
+
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .controls button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: gray;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h1>Noticias Deportivas</h1>
+        <div id="hora"></div> 
+    </header>
+
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="nacional.html">Futbol argentino</a>
+        <a href="internacional.html">Torneos internacionales</a>
+        <a href="otros.html">Otros</a>
+    </nav>
+
+    <section id="articles-section">
+        <article>
+            <a href="nacional.html">
+                <h2>Fútbol Argentino</h2>
+                <p>Segui el futbol argentino y enterate como va tu equipo.</p>
+                <img src="https://cdn.eldestapeweb.com/eldestape/032024/1710249570305/pelota-trofeo-futbol-argentino-jpg..jpg" style='max-width: 100%;'>
+            </a>
+        </article>
+
+        <article>
+            <a href="internacional.html">
+                <h2>Fútbol Internacional</h2>
+                <p>Se viene la copa america, mira como empieza el seleccionado nacional dirigido por scaloni.</p>
+                <img src="https://fotos.perfil.com/2023/05/10/trim/720/410/scaloni-1564906.jpg" style='max-width: 100%;'>
+            </a>
+        </article>
+
+        <article>
+            <a href="otros.html">
+                <h2>Otros Deportes</h2>
+                <p>Seguí de cerca los playoff de la NBA.</p>
+                <img src="https://s.france24.com/media/display/3295470c-1192-11ef-b54d-005056a90284/w:980/p:16x9/Part-GTY-2152813406-1-1-0.jpg" style='max-width: 100%;'>    
+            </a>
+        </article>
+    </section>
+
+    <footer>
+        <p>&copy; Geronimo Calvo, 2024 Noticias Deportivas</p>
+        <img src="https://i.pinimg.com/736x/47/fa/f0/47faf087d598cbf40839aa564b737d8b.jpg" alt="Deportes">
+    </footer>
+
+    <div class="controls">
+        <button onclick="alternarArticulos()">Mostrar/Ocultar Artículos</button>
+        <button onclick="cambiarTamañoTexto('aumentar')">Aumentar Texto</button>
+        <button onclick="cambiarTamañoTexto('disminuir')">Disminuir Texto</button>
+    </div>
+
+    <script>
+        function mostrarHora() {
+            var time = new Date();
+            var hora = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+            document.getElementById('hora').textContent = hora;
+        }
+
+        mostrarHora();
+        setInterval(mostrarHora, 1000); 
+
+     
+
+
+        function alternarArticulos() {
+            var articlesSection = document.getElementById('articles-section');
+            if (articlesSection.classList.contains('hidden')) {
+                articlesSection.classList.remove('hidden');
+            } else {
+                articlesSection.classList.add('hidden');
+            }
+        }
+
+        function cambiarTamañoTexto(accion) {
+            var todosLosTextos = document.querySelectorAll('p, h2');
+            todosLosTextos.forEach(function(texto) {
+                var tamañoActual = window.getComputedStyle(texto, null).getPropertyValue('font-size');
+                var tamañoActualNum = parseFloat(tamañoActual);
+                if (accion === 'aumentar') {
+                    texto.style.fontSize = (tamañoActualNum + 2) + 'px';
+                } else if (accion === 'disminuir') {
+                    texto.style.fontSize = (tamañoActualNum - 2) + 'px';
+                }
+            });
+        }
+
+       
+    </script>
+</body>
+</html>
