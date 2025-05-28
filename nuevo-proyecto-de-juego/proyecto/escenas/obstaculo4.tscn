@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0iasr2jvpiw8"]
+
+[ext_resource type="Script" path="res://escenas/obstaculo4.gd" id="1_ft73r"]
+[ext_resource type="Texture2D" uid="uid://dt1070nl2x6mk" path="res://valla2.png" id="2_7ur1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wh1hn"]
+size = Vector2(84.0016, 42.8989)
+
+[node name="Obstaculo4" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ft73r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1.99998, -4)
+rotation = 1.57254
+shape = SubResource("RectangleShape2D_wh1hn")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0.999985, -1.00001)
+rotation = 1.08734
+scale = Vector2(1.25252, 1.40053)
+skew = -0.698132
+texture = ExtResource("2_7ur1y")
+flip_h = true
+
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 5.0
+
+[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_incrementar_velocidad"]

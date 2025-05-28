@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjmp6dy7qppxb"]
+
+[ext_resource type="Script" path="res://escenas/asientos.gd" id="1_c16me"]
+[ext_resource type="Texture2D" uid="uid://ct1vel64al0pc" path="res://asiento.png" id="2_rlblr"]
+
+[node name="Asientos" type="Node2D"]
+script = ExtResource("1_c16me")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.368103, 1.07523)
+scale = Vector2(0.840084, 0.802792)
+skew = 0.261799
+texture = ExtResource("2_rlblr")

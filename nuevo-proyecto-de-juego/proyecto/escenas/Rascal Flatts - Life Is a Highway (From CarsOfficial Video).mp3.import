@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c680gyneh4rnn"
+path="res://.godot/imported/Rascal Flatts - Life Is a Highway (From CarsOfficial Video).mp3-fc3d7f16f1e57cb4a829c566d6fdc9ae.mp3str"
+
+[deps]
+
+source_file="res://escenas/Rascal Flatts - Life Is a Highway (From CarsOfficial Video).mp3"
+dest_files=["res://.godot/imported/Rascal Flatts - Life Is a Highway (From CarsOfficial Video).mp3-fc3d7f16f1e57cb4a829c566d6fdc9ae.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

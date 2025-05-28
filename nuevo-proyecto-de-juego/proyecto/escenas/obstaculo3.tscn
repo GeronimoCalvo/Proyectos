@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwxfeojqrujp1"]
+
+[ext_resource type="Script" path="res://scripts/obstaculo3.gd" id="1_m531d"]
+[ext_resource type="Texture2D" uid="uid://ic78hwcdlxvx" path="res://assets/pngwing.com (6).png" id="2_uaxlq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kh0ub"]
+size = Vector2(111, 32.5269)
+
+[node name="Obstaculo3" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_m531d")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.169325, 0.0946701)
+skew = -0.785398
+texture = ExtResource("2_uaxlq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_kh0ub")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 5.0
+
+[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_incrementar_velocidad"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b470nn8rve5sq"]
+
+[ext_resource type="Script" path="res://escenas/palmeras.gd" id="1_e2j2s"]
+[ext_resource type="Texture2D" uid="uid://d3hruols65y33" path="res://escenas/pngwing.com (4).png" id="2_up21n"]
+
+[node name="Palmeras" type="Node2D"]
+script = ExtResource("1_e2j2s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(224, -155)
+rotation = -6.28319
+scale = Vector2(0.137457, 0.0837954)
+skew = 0.261799
+texture = ExtResource("2_up21n")

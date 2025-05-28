@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://8illh38j5jv6"]
+
+[ext_resource type="Texture2D" uid="uid://bxb8e3qwiaxhh" path="res://assets/pngwing.com.png" id="1_vqblb"]
+
+[sub_resource type="GDScript" id="GDScript_6ieiw"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 250.0  # Velocidad de desplazamiento
+const SCREEN_WIDTH = 450.0  # Ancho de la pantalla
+const Y_MIN = 30.0  # Límite inferior del eje Y
+const Y_MAX = 300.0  # Límite superior del eje Y
+
+var vertical_direction = 1  # Dirección inicial hacia arriba
+
+func _ready() -> void:
+	position.x = SCREEN_WIDTH  # Comienza en el lado derecho de la pantalla
+	position.y = randf_range(Y_MIN, Y_MAX)  # Establecer una posición Y aleatoria
+
+func _physics_process(_delta: float) -> void:
+	velocity.x = -SPEED  # Mover siempre hacia la izquierda
+
+	# Variar la velocidad vertical aleatoriamente
+	var vertical_speed = randf_range(25.0, 200.0)
+	velocity.y = vertical_direction * vertical_speed  # Mover en la dirección vertical
+
+	move_and_slide()  # Llamar a move_and_slide
+
+	# Mantener el enemigo dentro de los límites de la pantalla en Y
+	if position.y < Y_MIN:
+		position.y = Y_MIN
+		vertical_direction = 1
+	elif position.y > Y_MAX:
+		position.y = Y_MAX
+		vertical_direction = -1
+
+	# Reaparecer en la derecha si sale por la izquierda
+	if position.x < -1100:  # Ajusta este valor según el tamaño del enemigo
+		position.x = SCREEN_WIDTH
+		position.y = randf_range(Y_MIN, Y_MAX)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb4ds"]
+size = Vector2(127.5, 51)
+
+[node name="Enemigos" type="Node2D"]
+
+[node name="enemigos" type="CharacterBody2D" parent="."]
+script = SubResource("GDScript_6ieiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemigos"]
+position = Vector2(0.25, 0.5)
+shape = SubResource("RectangleShape2D_xb4ds")
+one_way_collision_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="enemigos"]
+scale = Vector2(0.0785227, 0.06875)
+texture = ExtResource("1_vqblb")
+flip_v = true

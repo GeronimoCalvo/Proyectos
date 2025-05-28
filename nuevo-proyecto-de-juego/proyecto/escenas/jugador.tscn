@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnpyaqrlmo5qx"]
+
+[ext_resource type="Script" path="res://escenas/jugador.gd" id="1_mlhqe"]
+[ext_resource type="Texture2D" uid="uid://ckapb3ldhxblr" path="res://pngwing.com (3).png" id="2_v7lht"]
+[ext_resource type="AudioStream" uid="uid://o4fsje10tio0" path="res://escenas/Cars (Soundtrack) - Life Is A Highway.mp3" id="3_mj3c3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yot0x"]
+size = Vector2(143, 50)
+
+[node name="jugador" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_mlhqe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+position = Vector2(145.265, 334.379)
+rotation = 3.14159
+scale = Vector2(0.31745, 0.314694)
+texture = ExtResource("2_v7lht")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(147.5, 335)
+shape = SubResource("RectangleShape2D_yot0x")
+
+[node name="motor" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mj3c3")
+volume_db = 3.0
+autoplay = true

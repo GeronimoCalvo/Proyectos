@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnt33pvc0rpgh"]
+
+[ext_resource type="Script" path="res://escenas/obstaculos.gd" id="1_xlacf"]
+[ext_resource type="Texture2D" uid="uid://6vpnqh6kjxss" path="res://valla.png" id="2_pevdv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a4vi"]
+size = Vector2(34.3821, 89.0195)
+
+[node name="Obstaculos" type="Node2D"]
+
+[node name="obstaculos" type="CharacterBody2D" parent="."]
+script = ExtResource("1_xlacf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstaculos"]
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_5a4vi")
+
+[node name="Sprite2D" type="Sprite2D" parent="obstaculos"]
+position = Vector2(-1.52588e-05, 1.52588e-05)
+rotation = 1.5708
+scale = Vector2(1.331, 1.5)
+skew = -0.785398
+texture = ExtResource("2_pevdv")
+
+[node name="Timer" type="Timer" parent="obstaculos"]
+wait_time = 5.0
+
+[connection signal="timeout" from="obstaculos/Timer" to="obstaculos" method="_incrementar_velocidad"]

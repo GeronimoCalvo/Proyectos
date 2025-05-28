@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://o4fsje10tio0"
+path="res://.godot/imported/Cars (Soundtrack) - Life Is A Highway.mp3-e2d3ab778cac01ba23954a19154d7dcc.mp3str"
+
+[deps]
+
+source_file="res://escenas/Cars (Soundtrack) - Life Is A Highway.mp3"
+dest_files=["res://.godot/imported/Cars (Soundtrack) - Life Is A Highway.mp3-e2d3ab778cac01ba23954a19154d7dcc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

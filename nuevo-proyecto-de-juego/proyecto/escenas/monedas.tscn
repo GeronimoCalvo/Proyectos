@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl5mybiadxje"]
+
+[ext_resource type="Script" path="res://escenas/monedas.gd" id="1_akwmq"]
+[ext_resource type="Texture2D" uid="uid://f7hcoalr1gtg" path="res://coins-chests-etc-2-0-noborders.png" id="2_hg5wp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8y4d"]
+radius = 15.5617
+
+[sub_resource type="Animation" id="Animation_6txck"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_2xsd0"]
+resource_name = "coins"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mhiwp"]
+_data = {
+"RESET": SubResource("Animation_6txck"),
+"coins": SubResource("Animation_2xsd0")
+}
+
+[node name="Monedas" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_akwmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(-0.178262, 0)
+scale = Vector2(1.86461, 2.7106)
+skew = 0.261799
+texture = ExtResource("2_hg5wp")
+hframes = 6
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.999998, 1)
+rotation = -0.5044
+skew = 0.261799
+shape = SubResource("CircleShape2D_p8y4d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+libraries = {
+"": SubResource("AnimationLibrary_mhiwp")
+}
+autoplay = "coins"
+
+[node name="Timer" type="Timer" parent="Area2D"]
+wait_time = 5.0
+
+[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_incrementar_velocidad"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2vuwxjki7jhh"]
+
+[ext_resource type="Script" path="res://scripts/enemigo_2.gd" id="1_8h2dw"]
+[ext_resource type="Texture2D" uid="uid://bpjip0vmd0vib" path="res://assets/pngwing.com (2).png" id="2_4axc2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g4ej"]
+size = Vector2(126, 53)
+
+[node name="Enemigo2" type="Node2D"]
+
+[node name="enemigo2" type="CharacterBody2D" parent="."]
+script = ExtResource("1_8h2dw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemigo2"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_8g4ej")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemigo2"]
+z_as_relative = false
+position = Vector2(3.05176e-05, 0)
+rotation = 1.5708
+scale = Vector2(0.163, 0.165672)
+texture = ExtResource("2_4axc2")
+flip_h = true

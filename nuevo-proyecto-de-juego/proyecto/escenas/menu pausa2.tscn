@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://brjyn0et5qd3i"]
+
+[ext_resource type="Script" path="res://escenas/menu_pausa_2.gd" id="1_8wlxn"]
+[ext_resource type="Texture2D" uid="uid://d4gww8tmrh6pv" path="res://assets/chano.webp" id="2_im3nr"]
+[ext_resource type="FontFile" uid="uid://dkj5rup05rymo" path="res://assets/Fat Kat - (Demo) hanscostudio.com.ttf" id="3_rbrxn"]
+
+[node name="MenuPausa2" type="Node2D"]
+script = ExtResource("1_8wlxn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_im3nr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 287.0
+offset_top = 181.0
+offset_right = 576.0
+offset_bottom = 305.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rbrxn")
+theme_override_font_sizes/font_size = 20
+text = "Continuar"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rbrxn")
+theme_override_font_sizes/font_size = 20
+text = "Volver al menu"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rbrxn")
+theme_override_font_sizes/font_size = 20
+text = "Salir"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="continuar"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="volver_al_menu"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="salir"]
